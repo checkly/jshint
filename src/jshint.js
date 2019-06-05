@@ -1843,7 +1843,8 @@ var JSHINT = (function() {
       var blockEnd = checkPunctuator(state.tokens.next, "}");
 
       if (sameLine && !blockEnd && !(stmt.id === "do" && state.inES6(true))) {
-        errorAt("E058", state.tokens.curr.line, state.tokens.curr.character);
+        // commented out because "naked" await statements are allowed in Checkly
+        // errorAt("E058", state.tokens.curr.line, state.tokens.curr.character);
       } else if (!state.option.asi) {
 
         // If this is the last statement in a block that ends on the same line
@@ -1939,7 +1940,8 @@ var JSHINT = (function() {
 
     if (!t.block) {
       if (!state.option.expr && (!r || !r.exps)) {
-        warning("W030", state.tokens.curr);
+        // commented out because "naked" await statements are allowed in Checkly
+        // warning("W030", state.tokens.curr);
       } else if (state.option.nonew && r && r.left && r.id === "(" && r.left.id === "new") {
         warning("W031", t);
       }
